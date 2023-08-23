@@ -47,5 +47,17 @@ namespace dotnet6_inproc
                 FileDownloadName = $"Sample-{DateTime.Today.ToString("yyyy-MM-dd")}.csv",
             };
         }
+
+        [FunctionName("GetCsv2")]
+        public static async Task<IActionResult> RunGetCsvAsync2(
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
+            ILogger log)
+        {
+            var stream = new MemoryStream(Encoding.UTF8.GetBytes("Hello world!"));
+            return new FileStreamResult(stream, "application/octet-stream")
+            {
+                FileDownloadName = filename
+            };
+        }
     }
 }
