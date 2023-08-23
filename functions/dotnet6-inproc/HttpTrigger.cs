@@ -56,7 +56,7 @@ namespace dotnet6_inproc
             var stream = new MemoryStream(Encoding.UTF8.GetBytes("Hello world!"));
             return new FileStreamResult(stream, "application/octet-stream")
             {
-                FileDownloadName = filename
+                FileDownloadName = "somefile"
             };
         }
     }
