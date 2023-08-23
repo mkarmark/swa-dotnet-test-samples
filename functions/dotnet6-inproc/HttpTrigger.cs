@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -50,8 +51,7 @@ namespace dotnet6_inproc
 
         [FunctionName("GetCsv2")]
         public static async Task<IActionResult> RunGetCsvAsync2(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)] HttpRequest req)
         {
             var stream = new MemoryStream(Encoding.UTF8.GetBytes("Hello world!"));
             return new FileStreamResult(stream, "application/octet-stream")
